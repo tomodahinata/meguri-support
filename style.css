@@ -1,0 +1,48 @@
+/* layout: archetype=Long Document · axis=left-biased · date=2026-10-14 */
+/* 書体: 外部フォントは読み込まない（訪問者の情報を第三者に送らないため）。日本語のシステムフォントを指定する。 */
+:root {
+  --ink: oklch(0.23 0.03 240);
+  --ink-soft: oklch(0.42 0.03 240);
+  --ground: oklch(0.985 0.004 240);
+  --line: oklch(0.87 0.012 240);
+  --accent: oklch(0.42 0.075 240);
+  --amber: oklch(0.78 0.15 75);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: oklch(0.94 0.008 240);
+    --ink-soft: oklch(0.78 0.015 240);
+    --ground: oklch(0.19 0.02 240);
+    --line: oklch(0.34 0.02 240);
+    --accent: oklch(0.80 0.09 240);
+  }
+}
+* { box-sizing: border-box; }
+html { overflow-x: clip; }
+body {
+  margin: 0; background: var(--ground); color: var(--ink);
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", Meiryo, sans-serif;
+  font-size: 1rem; font-weight: 400;
+}
+:lang(ja) { line-break: strict; word-break: normal; overflow-wrap: anywhere; line-height: 1.75; letter-spacing: 0.02em; }
+:lang(ja) h1, :lang(ja) h2 { word-break: auto-phrase; line-height: 1.4; letter-spacing: 0; }
+@supports (text-autospace: normal) { :lang(ja) { text-autospace: normal; } }
+.page { width: min(36em, 100% - 32px); margin: 0 auto; padding: 24px 0 96px; }
+header { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+header a { color: var(--ink-soft); text-decoration: none; font-weight: 400; }
+header a:hover, header a:focus-visible { color: var(--ink); text-decoration: underline; }
+h1 { font-size: clamp(1.75rem, 2vw + 1.2rem, 2.25rem); font-weight: 700; margin: 64px 0 12px; }
+h2 { font-size: 1.25rem; font-weight: 700; margin: 64px 0 12px; }
+p, li { margin: 0 0 12px; }
+ul { padding-left: 1.4em; margin: 0 0 12px; }
+.lead { color: var(--ink-soft); }
+.summary { margin: 40px 0 0; padding: 16px 0; border-top: 2px solid var(--accent); border-bottom: 1px solid var(--line); }
+.summary li { margin-bottom: 8px; }
+a { color: var(--accent); text-underline-offset: 0.2em; }
+a:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+.meta { color: var(--ink-soft); font-size: 0.9375rem; }
+footer { margin-top: 96px; padding-top: 24px; border-top: 1px solid var(--line); }
+table { width: 100%; border-collapse: collapse; margin: 0 0 12px; }
+th, td { text-align: left; vertical-align: top; padding: 12px 8px 12px 0; border-bottom: 1px solid var(--line); }
+th { width: 34%; font-weight: 700; }
+@media (max-width: 480px) { th, td { display: block; width: 100%; padding: 8px 0; } th { border-bottom: 0; padding-bottom: 0; } }
